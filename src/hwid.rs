@@ -7,8 +7,8 @@ use winreg::RegKey;
 pub fn hwid_check() {
     // List of authorized HWIDs
     let hwids = [
-        "{59cd1bc0-d793-11ea-bab0-806e6f6e6963}", // Example HWID
-        "", // user
+        "{59cd1bc0-d793-11ea-bab0-806e6f6e6963}", // adf
+        "{d16a5025-8b21-11ef-a411-806e6f6e6963}", // cat
         "", // user
     ];
 
