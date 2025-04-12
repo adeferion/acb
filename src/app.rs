@@ -353,7 +353,13 @@ impl eframe::App for clicksbotgui {
 
                         println!("fps: {}", fps);
                     }
+                } else {
+                    let clicks_path = "clicks.txt";
+                    let releases_path = "releases.txt";
 
+                    parse_txt(&mut clicks, &mut releases, clicks_path, releases_path);
+
+                    fps = fps / 2;
                 }
 
                 /*let lister;
