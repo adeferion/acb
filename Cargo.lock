@@ -703,6 +703,7 @@ dependencies = [
  "fakedata_generator",
  "hound",
  "image",
+ "once_cell",
  "rar",
  "reqwest",
  "rodio",

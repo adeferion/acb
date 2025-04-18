@@ -13,6 +13,12 @@ use crate::macro_parser::{parse_txt, parse_zbf};
 use eframe::egui::Vec2;
 use rodio::source::Buffered;
 use std::path::Path;
+use once_cell::sync::Lazy;
+use tokio::runtime::Runtime;
+
+static TOKIO_RT: Lazy<Runtime> = Lazy::new(|| {
+    Runtime::new().expect("Failed to create Tokio runtime")
+});
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[cfg_attr(feature = "persistence", derive(serde::Deserialize, serde::Serialize))]
@@ -329,8 +335,10 @@ impl eframe::App for clicksbotgui {
 
                });
 
-            if ui.button("Render").clicked() {
-                hwid_check();
+               if ui.button("Render").clicked() {
+                TOKIO_RT.spawn(async {
+                    hwid_check().await;
+                });
 
                 let mut fps: u32 = string_fps.trim().parse().expect("Invalid FPS!");
 

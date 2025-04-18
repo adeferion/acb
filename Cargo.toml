@@ -22,6 +22,7 @@ fakedata_generator = "0.3.0"
 winreg = "0.10"
 reqwest = { version = "0.11", features = ["json", "blocking", "rustls-tls"] }
 tokio = { version = "1", features = ["full"] }
+once_cell = "1.18"
 
 serde = { version = "1", features = ["derive"], optional = true }
 image = "0.24.5"
